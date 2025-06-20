@@ -15,6 +15,20 @@
       "when": 1749444915170,
       "tag": "0001_chief_alex_wilder",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1749943307395,
+      "tag": "0002_faulty_madripoor",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1750395494881,
+      "tag": "0003_grey_pretty_boy",
+      "breakpoints": true
     }
   ]
 }

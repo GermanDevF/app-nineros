@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { useMedia } from "react-use";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { useState } from "react";
 import { MenuIcon } from "lucide-react";
 
@@ -78,6 +78,7 @@ export default function Navigation() {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
+          <SheetTitle>Menu</SheetTitle>
           <nav className="flex flex-col gap-y-2 pt-6">
             {routes.map((route) => (
               <Button
