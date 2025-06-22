@@ -18,6 +18,7 @@ export const useCreateCategory = () => {
     onSuccess: () => {
       toast.success("Category created successfully");
       queryClient.invalidateQueries({ queryKey: ["categories"] });
+      queryClient.invalidateQueries({ queryKey: ["transactions"] });
     },
     onError: (error) => {
       console.error(error);

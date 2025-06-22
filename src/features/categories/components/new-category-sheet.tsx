@@ -5,17 +5,20 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useNewCategoryStore } from "../hooks/use-new-category";
-import { CategoryForm, FormValues } from "./category-form";
-import { useCreateCategory } from "../hooks/use-create-category";
+import { useNewCategoryStore } from "@/features/categories/hooks/use-new-category";
+import {
+  CategoryForm,
+  FormValues,
+} from "@/features/categories/components/category-form";
+import { useCreateCategory } from "@/features/categories/api/use-create-category";
 
 export const NewCategorySheet = () => {
   const { isOpen, onClose } = useNewCategoryStore();
 
-  const { mutate: createCategory, isPending } = useCreateCategory();
+  const createCategory = useCreateCategory();
 
   const onSubmit = (values: FormValues) => {
-    createCategory(values, {
+    createCategory.mutate(values, {
       onSuccess: () => {
         onClose();
       },
@@ -26,15 +29,15 @@ export const NewCategorySheet = () => {
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="space-y-4">
         <SheetHeader>
-          <SheetTitle>New Account</SheetTitle>
+          <SheetTitle>New Category</SheetTitle>
           <SheetDescription>
-            Create a new account to track your finances.
+            Create a new category to track your finances.
           </SheetDescription>
         </SheetHeader>
         <CategoryForm
           onSubmit={onSubmit}
           onDelete={() => {}}
-          disabled={isPending}
+          disabled={createCategory.isPending}
           defaultValues={{ name: "" }}
         />
       </SheetContent>

@@ -38,7 +38,7 @@ const app = new Hono()
       const { id } = c.req.valid("param");
 
       if (!id) {
-        return c.json({ error: "Missing account ID" }, 400);
+        return c.json({ error: "Missing category ID" }, 400);
       }
 
       const [data] = await db

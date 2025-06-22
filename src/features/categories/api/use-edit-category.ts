@@ -34,6 +34,7 @@ export const useEditCategory = () => {
       queryClient.invalidateQueries({
         queryKey: ["categories"],
       });
+      queryClient.invalidateQueries({ queryKey: ["transactions"] });
     },
     onError: (error) => {
       console.error(error);
