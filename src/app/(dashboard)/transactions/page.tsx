@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { Loader2, PlusIcon } from "lucide-react";
 
 import { transactions } from "@/db/schema";
@@ -32,7 +32,7 @@ const INITIAL_IMPORT_RESULTS = {
   meta: {},
 };
 
-export default function TransactionsPage() {
+function TransactionsPageContent() {
   const [SelectAccountDialog, selectAccount] = useSelectAccount();
   const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
   const [importResults, setImportResults] = useState<
@@ -139,5 +139,27 @@ export default function TransactionsPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function TransactionsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
+          <Card className="border-none drop-shadow-sm">
+            <CardHeader className="flex flex-col gap-y-2 lg:flex-row lg:items-center lg:justify-between">
+              <Skeleton className="h-8 w-48" />
+            </CardHeader>
+            <CardContent>
+              <div className="h-[500px] w-full flex items-center justify-center">
+                <Loader2 className="size-4 animate-spin text-muted-foreground" />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      }>
+      <TransactionsPageContent />
+    </Suspense>
   );
 }
