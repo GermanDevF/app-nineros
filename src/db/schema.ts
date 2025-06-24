@@ -52,6 +52,7 @@ export const insertTransactionSchema = createInsertSchema(transactions, {
 });
 
 export type InsertTransaction = InferInsertModel<typeof transactions>;
+export type UpdateTransaction = Partial<InsertTransaction>;
 
 export const selectTransactionSchema = createSelectSchema(transactions);
 export type SelectTransaction = InferSelectModel<typeof transactions>;

@@ -5,9 +5,13 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useNewAccountStore } from "../hooks/use-new-accout";
-import { AccountForm, FormValues } from "./account-form";
-import { useCreateAccount } from "../hooks/use-create-account";
+
+import { useNewAccountStore } from "@/features/accounts/hooks/use-new-accout";
+import {
+  AccountForm,
+  FormValues,
+} from "@/features/accounts/components/account-form";
+import { useCreateAccount } from "@/features/accounts/api/use-create-account";
 
 export const NewAccountSheet = () => {
   const { isOpen, onClose } = useNewAccountStore();

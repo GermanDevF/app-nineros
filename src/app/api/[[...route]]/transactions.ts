@@ -248,7 +248,7 @@ const app = new Hono()
           amount: z.number().int(),
           payee: z.string(),
           notes: z.string().nullable().optional(),
-          date: z.date(),
+          date: z.coerce.date(),
           accountId: z.string(),
           categoryId: z.string().nullable().optional(),
         })

@@ -17,8 +17,16 @@ export const useBulkCreateTransactions = () => {
   const mutation = useMutation<ResponseType, Error, RequestType>({
     mutationFn: async (data) => {
       const response = await client.api.transactions["bulk-create"]["$post"]({
-        json: data,
+        json: data.map((item) => ({
+          ...item,
+          date: new Date(item.date),
+        })),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to create transactions");
+      }
+
       return response.json();
     },
     onSuccess: () => {

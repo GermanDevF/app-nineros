@@ -6,7 +6,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
-import { useCreateAccount } from "@/features/accounts/hooks/use-create-account";
+import { useCreateAccount } from "@/features/accounts/api/use-create-account";
 
 import { useCreateCategory } from "@/features/categories/api/use-create-category";
 import { useGetCategories } from "@/features/categories/api/use-get-categories";
@@ -15,6 +15,7 @@ import { useCreateTransaction } from "@/features/transactions/api/use-create-tra
 import { TransactionForm } from "@/features/transactions/components/transaction-form";
 import { useNewTransactionStore } from "@/features/transactions/hooks/use-new-transaction";
 import { Loader2 } from "lucide-react";
+import { InsertTransaction, UpdateTransaction } from "@/db/schema";
 
 export const NewTransactionSheet = () => {
   const { isOpen, onClose } = useNewTransactionStore();
@@ -52,19 +53,21 @@ export const NewTransactionSheet = () => {
     value: category.id,
   }));
 
-  const onSubmit = (values: {
-    amount: number;
-    payee: string;
-    date: Date;
-    accountId: string;
-    notes?: string | null | undefined;
-    categoryId?: string | null | undefined;
-  }) => {
-    createTransaction.mutate(values, {
-      onSuccess: () => {
-        onClose();
+  const onSubmit = (values: UpdateTransaction) => {
+    createTransaction.mutate(
+      {
+        date: values.date?.toISOString() ?? new Date().toISOString(),
+        amount: values.amount?.toString() ?? "0",
+        payee: values.payee ?? "",
+        accountId: values.accountId ?? "",
+        categoryId: values.categoryId,
       },
-    });
+      {
+        onSuccess: () => {
+          onClose();
+        },
+      }
+    );
   };
 
   return (
