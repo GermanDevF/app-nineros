@@ -5,17 +5,17 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { useCreateAccount } from "@/features/accounts/api/use-create-account";
+import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 
 import { useCreateCategory } from "@/features/categories/api/use-create-category";
 import { useGetCategories } from "@/features/categories/api/use-get-categories";
 
+import { UpdateTransaction } from "@/db/schema";
 import { useCreateTransaction } from "@/features/transactions/api/use-create-transaction";
 import { TransactionForm } from "@/features/transactions/components/transaction-form";
 import { useNewTransactionStore } from "@/features/transactions/hooks/use-new-transaction";
 import { Loader2 } from "lucide-react";
-import { InsertTransaction, UpdateTransaction } from "@/db/schema";
 
 export const NewTransactionSheet = () => {
   const { isOpen, onClose } = useNewTransactionStore();
@@ -56,7 +56,7 @@ export const NewTransactionSheet = () => {
   const onSubmit = (values: UpdateTransaction) => {
     createTransaction.mutate(
       {
-        date: values.date?.toISOString() ?? new Date().toISOString(),
+        date: values.date ?? new Date(),
         amount: values.amount?.toString() ?? "0",
         payee: values.payee ?? "",
         accountId: values.accountId ?? "",
