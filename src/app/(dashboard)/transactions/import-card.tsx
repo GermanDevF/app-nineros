@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ImportTable } from "./import-table";
 import { convertAmountToMiliunits } from "@/lib/utils";
 import { format, parse } from "date-fns";
+import { transactions } from "@/db/schema";
 
 const dateFormat = "yyyy-MM-dd HH:mm:ss";
 const outputDateFormat = "yyyy-MM-dd";
@@ -16,7 +17,7 @@ interface SelectedColumnState {
 
 type Props = {
   data: string[][];
-  onSubmit: (data: any) => void;
+  onSubmit: (data: (typeof transactions.$inferInsert)[]) => void;
   onCancel: () => void;
 };
 
@@ -99,7 +100,7 @@ export const ImportCard = ({ data, onSubmit, onCancel }: Props) => {
       };
     });
 
-    onSubmit(formattedData);
+    onSubmit(formattedData as unknown as (typeof transactions.$inferInsert)[]);
   };
 
   return (
