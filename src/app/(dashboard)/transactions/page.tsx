@@ -17,7 +17,7 @@ import { useGetTransactions } from "@/features/transactions/api/use-get-transact
 import { useNewTransactionStore } from "@/features/transactions/hooks/use-new-transaction";
 import { columns } from "./columns";
 import { ImportCard } from "./import-card";
-import { UploadButton } from "./upload-button";
+import { INITIAL_IMPORT_RESULTS, UploadButton } from "./upload-button";
 import { useSelectAccount } from "@/features/accounts/hooks/use-select-account";
 import { toast } from "sonner";
 
@@ -25,12 +25,6 @@ enum VARIANTS {
   LIST = "LIST",
   IMPORT = "IMPORT",
 }
-
-export const INITIAL_IMPORT_RESULTS = {
-  data: [],
-  errors: [],
-  meta: {},
-};
 
 function TransactionsPageContent() {
   const [SelectAccountDialog, selectAccount] = useSelectAccount();
