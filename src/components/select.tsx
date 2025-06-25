@@ -1,12 +1,12 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { useMemo } from "react";
 import { SingleValue } from "react-select";
 import CreatableSelect from "react-select/creatable";
-import { cn } from "@/lib/utils";
 
 type Props<T> = {
-  options?: { label: string; value: string }[];
+  options?: T[];
   value?: string | null | undefined;
   onChange: (value?: string) => void;
   onCreateOption?: (inputValue: string) => void;
