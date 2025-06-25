@@ -26,7 +26,7 @@ enum VARIANTS {
   IMPORT = "IMPORT",
 }
 
-const INITIAL_IMPORT_RESULTS = {
+export const INITIAL_IMPORT_RESULTS = {
   data: [],
   errors: [],
   meta: {},
