@@ -113,7 +113,7 @@ function TransactionsPageContent() {
       <Card className="border-none drop-shadow-sm">
         <CardHeader className="flex flex-col gap-y-2 lg:flex-row md:justify-between">
           <CardTitle className="text-xl line-clamp-1">Transactions</CardTitle>
-          <div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2 items-center">
+          <div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2 items-center w-full lg:w-auto">
             <Button
               size="sm"
               className="w-full lg:w-auto"

@@ -35,7 +35,7 @@ export const CategoryColumn = ({
         "flex items-center cursor-pointer hover:underline",
         !category && "text-rose-500"
       )}>
-      <Button variant="ghost" size="icon" onClick={onClick}>
+      <Button variant="ghost" onClick={onClick}>
         {!category && (
           <TriangleAlert className="size-4 text-rose-500 shrink-0" />
         )}

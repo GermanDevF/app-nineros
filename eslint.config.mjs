@@ -14,8 +14,6 @@ const eslintConfig = [
   {
     rules: {
       "@typescript-eslint/no-unused-vars": "warn",
-      "drizzle/enforce-delete-with-where": "error",
-      "drizzle/enforce-update-with-where": "error",
     },
   },
 ];

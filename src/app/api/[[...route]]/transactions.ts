@@ -1,10 +1,5 @@
 import { db } from "@/db/drizzle";
-import {
-  transactions,
-  insertTransactionSchema,
-  categories,
-  accounts,
-} from "@/db/schema";
+import { accounts, categories, transactions } from "@/db/schema";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
 import { zValidator } from "@hono/zod-validator";
 import { createId } from "@paralleldrive/cuid2";
@@ -207,11 +202,12 @@ const app = new Hono()
     zValidator(
       "json",
       z.object({
-        date: z.string(),
+        date: z.coerce.date(),
         accountId: z.string(),
         categoryId: z.string().nullable().optional(),
         payee: z.string(),
         amount: z.string(),
+        notes: z.string().nullable().optional(),
       })
     ),
     async (c) => {
@@ -231,7 +227,8 @@ const app = new Hono()
           amount: parseInt(values.amount),
           payee: values.payee,
           accountId: values.accountId,
-          categoryId: values.categoryId,
+          categoryId: values.categoryId ?? null,
+          notes: values.notes,
         })
         .returning();
 

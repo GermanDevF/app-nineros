@@ -26,7 +26,7 @@ import { convertAmountToMiliunits } from "@/lib/utils";
 const formSchema = z.object({
   date: z.coerce.date(),
   accountId: z.string(),
-  categoryId: z.string().nullable().optional(),
+  categoryId: z.string().min(1, "Category is required"),
   payee: z.string(),
   amount: z.string(),
   notes: z.string().nullable().optional(),
