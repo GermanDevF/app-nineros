@@ -111,7 +111,7 @@ export const EditTransactionSheet = () => {
           ? new Date(transactionQuery.data.date)
           : new Date(),
         accountId: transactionQuery.data.accountId,
-        categoryId: transactionQuery.data.categoryId,
+        categoryId: transactionQuery.data.categoryId ?? null,
       }
     : {
         amount: "0",
@@ -119,7 +119,7 @@ export const EditTransactionSheet = () => {
         notes: "",
         date: new Date(),
         accountId: "",
-        categoryId: "",
+        categoryId: null,
       };
 
   return (
