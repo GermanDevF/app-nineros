@@ -28,6 +28,7 @@ export const DateFilter = () => {
 
   const from = searchParams.get("from") || "";
   const to = searchParams.get("to") || "";
+  const accountId = searchParams.get("accountId");
 
   const defaultTo = new Date();
   const defaultFrom = subDays(defaultTo, 30);
@@ -43,6 +44,7 @@ export const DateFilter = () => {
     const query = {
       from: format(date?.from || defaultFrom, "yyyy-MM-dd"),
       to: format(date?.to || defaultTo, "yyyy-MM-dd"),
+      accountId,
     };
 
     const queryString = qs.stringifyUrl(
