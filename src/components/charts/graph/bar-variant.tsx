@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import { formatAmount } from "@/lib/utils";
 import {
   Tooltip,
   XAxis,
@@ -9,7 +8,10 @@ import {
   BarChart,
   YAxis,
 } from "recharts";
-import { CustomTooltip } from "./custom-tooltip";
+
+import { formatAmount } from "@/lib/utils";
+
+import { CustomTooltip } from "@/components/charts/tooltips/custom-tooltip";
 
 type Props = {
   data: {

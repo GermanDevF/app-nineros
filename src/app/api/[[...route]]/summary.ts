@@ -93,6 +93,7 @@ const app = new Hono().get(
     const category = await db
       .select({
         name: categories.name,
+        percentage: sql`SUM(ABS(${transactions.amount}))`.mapWith(Number),
         value: sql`SUM(ABS(${transactions.amount}))`.mapWith(Number),
       })
       .from(transactions)
@@ -112,13 +113,17 @@ const app = new Hono().get(
 
     const topCategories = category.slice(0, 3);
     const otherCategories = category.slice(3);
-    const otherSum = otherCategories.reduce((acc, curr) => acc + curr.value, 0);
+    const otherSum = otherCategories.reduce(
+      (acc, curr) => acc + curr.percentage,
+      0
+    );
 
     const finalCategories = topCategories;
 
     if (otherCategories.length > 0) {
       finalCategories.push({
         name: "Other",
+        percentage: (otherSum / (currentPeriod?.expenses ?? 0)) * 100,
         value: otherSum,
       });
     }

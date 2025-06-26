@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { AreaVariant } from "@/components/area-variant";
-import { BarVariant } from "@/components/bar-variant";
-import { LineVariant } from "@/components/line-variant";
+import { AreaVariant } from "@/components/charts/graph/area-variant";
+import { BarVariant } from "@/components/charts/graph/bar-variant";
+import { LineVariant } from "@/components/charts/graph/line-variant";
 
 type Props = {
   data?: {
@@ -32,7 +32,7 @@ export const Chart = ({ data = [] }: Props) => {
   };
 
   return (
-    <Card className="border-none drop-shadow-sm">
+    <Card className="drop-shadow-none shadow-none">
       <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center lg:justify-between">
         <CardTitle className="text-xl line-clamp-1">Transactions</CardTitle>
         <Select value={variant} onValueChange={onTypeChange}>

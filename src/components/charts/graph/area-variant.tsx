@@ -1,5 +1,5 @@
 "use client";
-import { formatAmount } from "@/lib/utils";
+
 import { format } from "date-fns";
 import {
   Area,
@@ -10,7 +10,10 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { CustomTooltip } from "@/components/custom-tooltip";
+
+import { formatAmount } from "@/lib/utils";
+
+import { CustomTooltip } from "@/components/charts/tooltips/custom-tooltip";
 
 type Props = {
   data?: {

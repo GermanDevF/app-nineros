@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { DataGrid } from "@/components/data-grid";
 
 import { DataCardSk } from "@/components/skelletons/data-card-sk";
-import { DataCharts } from "@/components/data-charts";
+import { DataCharts } from "@/components/charts/data-charts";
 
 export default function Dashboard() {
   return (
