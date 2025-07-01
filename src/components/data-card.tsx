@@ -60,7 +60,7 @@ export const DataCard = ({
   dateRange,
 }: Props) => {
   return (
-    <Card className="border-none drop-shadow-sm">
+    <Card className="shadow-none drop-shadow-none">
       <CardHeader className="flex flex-row items-center justify-between gap-x-4">
         <div className="flex flex-col gap-y-2">
           <CardTitle className="text-2xl line-clamp-1">{title}</CardTitle>
@@ -89,7 +89,8 @@ export const DataCard = ({
             "text-sm text-muted-foreground line-clamp-1",
             change > 0 && "text-emerald-500",
             change < 0 && "text-rose-500"
-          )}>
+          )}
+        >
           {formatPercentage(change, { addPrefix: true })} from last period
         </p>
       </CardContent>
