@@ -71,9 +71,7 @@ export const DateFilter = () => {
           size="sm"
           variant="outline"
           className="lg:w-auto w-full h-9 rounded-md px-3 font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus:ring-offset-0 focus:ring-0 outline-none text-white focus:bg-white/30 transition">
-          <span className="hidden lg:inline-flex">
-            {fromatDateRange(paramState)}
-          </span>
+          <span className="">{fromatDateRange(paramState)}</span>
           <ChevronDown className="ml-2 size-4 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -90,7 +88,7 @@ export const DateFilter = () => {
         <div className="flex items-center justify-end p-4 gap-2">
           <PopoverClose asChild>
             <Button
-              className="w-full"
+              className="w-1/2"
               variant="outline"
               size="sm"
               onClick={onReset}
@@ -99,7 +97,7 @@ export const DateFilter = () => {
             </Button>
           </PopoverClose>
           <Button
-            className="w-full"
+            className="w-1/2"
             size="sm"
             onClick={() => pushToUrl(date)}
             disabled={!date?.from || !date?.to}>
