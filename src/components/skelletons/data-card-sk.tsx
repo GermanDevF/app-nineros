@@ -10,7 +10,7 @@ import { Skeleton } from "../ui/skeleton";
 
 export const DataCardSk = () => {
   return (
-    <Card className="border-none drop-shadow-sm">
+    <Card className="shadow-none drop-shadow-none">
       <CardHeader className="flex flex-row items-center justify-between gap-x-4">
         <div className="flex flex-col gap-y-2">
           <CardTitle className="text-2xl line-clamp-1">
